@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#111110">
+  <meta name="description" content="AETHER — considered streetwear, relaxed silhouettes, everyday essentials.">
+  <title>AETHER — Premium Streetwear</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="announcement">A NEW POINT OF VIEW — DISCOVER THE LATEST EDIT <span>✳</span></div>
+  <header class="site-header" id="top">
+    <button class="mobile-menu icon-button" id="mobileMenuBtn" aria-label="Open menu">☰</button>
+    <a class="wordmark" href="#top" aria-label="AETHER home">AETHER<span>®</span></a>
+    <nav class="main-nav" id="mainNav" aria-label="Main navigation">
+      <a href="#shop">Shop all</a><a href="#shop" data-jump-filter="tops">Tops</a><a href="#shop" data-jump-filter="bottoms">Bottoms</a><a href="#combos">Styled looks</a><a href="#story">Our story</a>
+    </nav>
+    <div class="header-actions">
+      <button class="icon-button search-toggle" id="searchToggle" aria-label="Search products">⌕</button>
+      <button class="bag-button" id="cartOpen">Bag <span id="cartCount">0</span></button>
+    </div>
+  </header>
+  <div class="search-bar" id="searchBar"><input id="searchInput" type="search" placeholder="Search the collection…" aria-label="Search products"><button id="searchClose" aria-label="Close search">×</button></div>
+
+  <main>
+    <section class="hero">
+      <div class="hero-copy">
+        <p class="eyebrow">THE EVERYDAY UNIFORM · DROP 01</p>
+        <h1>Wear your<br><em>own rhythm.</em></h1>
+        <p class="hero-description">Relaxed shapes. Muted tones. Pieces that make getting dressed feel effortless.</p>
+        <a class="button button-dark" href="#shop">Explore the collection <span>↗</span></a>
+        <div class="hero-foot"><span>01 / 09</span><span>DESIGNED FOR EVERYDAY</span></div>
+      </div>
+      <div class="hero-image-wrap"><img src="images/look-01.jpg" alt="White shirt, tie and relaxed grey denim outfit" class="hero-image"><div class="image-stamp">THE<br>NEW<br>CLASSIC.</div></div>
+    </section>
+
+    <section class="ticker" aria-label="Brand statement"><div>LESS NOISE. MORE YOU. <span>✳</span> EVERYDAY, REDEFINED. <span>✳</span> LESS NOISE. MORE YOU. <span>✳</span> EVERYDAY, REDEFINED. <span>✳</span></div></section>
+
+    <section class="shop-section section-pad" id="shop">
+      <div class="section-heading"><div><p class="eyebrow">THE AETHER EDIT</p><h2>Find your <em>form.</em></h2></div><p class="section-note">A considered collection of easy layers<br>and oversized essentials.</p></div>
+      <div class="shop-toolbar"><div class="filter-list" role="group" aria-label="Filter products"><button class="filter-chip active" data-filter="all">All pieces <span>09</span></button><button class="filter-chip" data-filter="tops">Tops</button><button class="filter-chip" data-filter="bottoms">Bottoms</button><button class="filter-chip" data-filter="outerwear">Outerwear</button><button class="filter-chip" data-filter="looks">Styled looks</button></div><span class="result-count" id="resultCount">09 PRODUCTS</span></div>
+      <div class="product-grid" id="productGrid"></div>
+    </section>
+
+    <section class="editorial section-pad" id="combos">
+      <div class="editorial-image"><img src="images/look-05.jpg" alt="Dark layered streetwear outfit with denim jacket and cargo trousers" loading="lazy"><span class="vertical-label">AETHER / LOOKBOOK 01</span></div>
+      <div class="editorial-copy"><p class="eyebrow">STYLE IT YOUR WAY</p><h2>Good style.<br><em>No overthinking.</em></h2><p>Build a look around the pieces you reach for again and again. Washed denim, easy layers and details that do just enough.</p><a href="#shop" class="text-link">Shop the edit <span>↗</span></a><div class="editorial-index">LOOKBOOK <strong>01—09</strong></div></div>
+    </section>
+
+    <section class="values section-pad" id="story"><div class="values-intro"><p class="eyebrow">THE AETHER APPROACH</p><h2>Less, but<br><em>better.</em></h2></div><div class="value-card"><span>01</span><h3>Easy silhouettes</h3><p>Relaxed proportions made for movement, comfort and your own styling.</p></div><div class="value-card"><span>02</span><h3>Everyday palette</h3><p>Washed greys, deep blacks and quiet neutrals that work together.</p></div><div class="value-card"><span>03</span><h3>Your own uniform</h3><p>Versatile pieces to wear on repeat, not just for one moment.</p></div></section>
+
+    <section class="newsletter section-pad"><div><p class="eyebrow">STAY IN THE LOOP</p><h2>Good things, <em>occasionally.</em></h2><p>Get updates on new drops and styling edits.</p></div><form id="newsletterForm"><label class="sr-only" for="newsletterEmail">Email address</label><input id="newsletterEmail" type="email" placeholder="Your email address" required><button type="submit" aria-label="Subscribe">Join ↗</button><small id="newsletterMessage">No spam. Just the good stuff.</small></form></section>
+  </main>
+
+  <footer class="site-footer"><div class="footer-top"><a class="wordmark footer-logo" href="#top">AETHER<span>®</span></a><p>Everyday essentials.<br>Personal expression.</p><a class="back-top" href="#top">BACK TO TOP ↑</a></div><div class="footer-bottom"><span>© <span id="year"></span> AETHER STUDIO</span><span>MADE FOR YOUR EVERYDAY</span><span>DEMO STORE · ORDER FLOW NOT CONNECTED TO A PAYMENT GATEWAY</span></div></footer>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <div class="drawer-backdrop" id="drawerBackdrop"></div>
+  <aside class="cart-drawer" id="cartDrawer" aria-label="Shopping bag" aria-hidden="true"><div class="drawer-header"><div><p class="eyebrow">YOUR SELECTION</p><h2>Your bag <span id="drawerCount">(0)</span></h2></div><button class="close-button" id="cartClose" aria-label="Close bag">×</button></div><div class="cart-lines" id="cartLines"></div><div class="empty-bag" id="emptyBag"><span>✳</span><h3>Your bag is taking a breather.</h3><p>Add a piece you love and it’ll show up here.</p><button class="button button-dark" id="continueShopping">Explore pieces ↗</button></div><div class="drawer-footer" id="drawerFooter"><div class="subtotal"><span>Subtotal</span><strong id="subtotal">₹0</strong></div><p>Shipping and final details can be confirmed when placing your order.</p><button class="button button-dark checkout-button" id="checkoutOpen">Continue to order <span>↗</span></button><small>Demo storefront — no payment is collected on this page.</small></div></aside>
+
+  <div class="modal-backdrop" id="modalBackdrop"><section class="order-modal" role="dialog" aria-modal="true" aria-labelledby="orderTitle"><button class="close-button modal-x" id="orderClose" aria-label="Close order form">×</button><p class="eyebrow">ONE LAST STEP</p><h2 id="orderTitle">Let's get it <em>to you.</em></h2><p class="modal-intro">Enter your details to prepare an order message. This demo does not process payments.</p><form id="orderForm"><label>Full name<input name="name" required autocomplete="name" placeholder="Your name"></label><label>Phone number<input name="phone" required inputmode="tel" pattern="[0-9+()\- ]{8,18}" autocomplete="tel" placeholder="Your contact number"></label><label>Delivery address<textarea name="address" rows="3" required autocomplete="street-address" placeholder="House, street, area and PIN code"></textarea></label><label>Order note <textarea name="note" rows="2" placeholder="Size, colour or anything else (optional)"></textarea></label><button class="button button-dark full-width" type="submit">Prepare order message ↗</button><p class="form-footnote">Connect this form to your own WhatsApp number or store backend before accepting real orders.</p></form></section></div>
+  <script src="script.js"></script>
+</body>
+</html>
