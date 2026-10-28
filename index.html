@@ -1,68 +1,272 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#111110">
-  <meta name="description" content="AETHER — considered streetwear, relaxed silhouettes, everyday essentials.">
-  <title>AETHER — Premium Streetwear</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AETHER — Premium Streetwear</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 </head>
 <body>
-  <div class="announcement">A NEW POINT OF VIEW — DISCOVER THE LATEST EDIT <span>✳</span></div>
-  <header class="site-header" id="top">
-    <button class="mobile-menu icon-button" id="mobileMenuBtn" aria-label="Open menu">☰</button>
-    <a class="wordmark" href="#top" aria-label="AETHER home">AETHER<span>®</span></a>
-    <nav class="main-nav" id="mainNav" aria-label="Main navigation">
-      <a href="#shop">Shop all</a><a href="#shop" data-jump-filter="tops">Tops</a><a href="#shop" data-jump-filter="bottoms">Bottoms</a><a href="#combos">Styled looks</a><a href="#story">Our story</a>
+    <!-- Navbar -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <a href="#" class="logo" onclick="showSection('home')">AETHER</a>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#" onclick="showSection('home')">Home</a></li>
+                <li><a href="#" onclick="showSection('shop')">Shop</a></li>
+                <li><a href="#" onclick="showSection('combos')">Combos</a></li>
+                <li><a href="#" onclick="showSection('about')">About</a></li>
+            </ul>
+            <div class="nav-actions">
+                <button class="icon-btn" onclick="toggleLocation()" title="Detect Location">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <span id="locationText">Location</span>
+                </button>
+                <button class="icon-btn" onclick="toggleCart()" title="Cart">
+                    <i class="fas fa-shopping-bag"></i>
+                    <span class="cart-count" id="cartCount">0</span>
+                </button>
+                <button class="icon-btn" id="authBtn" onclick="toggleAuthModal()">
+                    <i class="fas fa-user"></i>
+                    <span id="authText">Login</span>
+                </button>
+                <button class="menu-toggle" onclick="toggleMobileMenu()">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
     </nav>
-    <div class="header-actions">
-      <button class="icon-button search-toggle" id="searchToggle" aria-label="Search products">⌕</button>
-      <button class="bag-button" id="cartOpen">Bag <span id="cartCount">0</span></button>
+
+    <!-- Location Toast -->
+    <div class="location-toast" id="locationToast">
+        <i class="fas fa-map-marker-alt"></i>
+        <span id="locationMessage">Detecting your location...</span>
+        <button onclick="closeLocationToast()">&times;</button>
     </div>
-  </header>
-  <div class="search-bar" id="searchBar"><input id="searchInput" type="search" placeholder="Search the collection…" aria-label="Search products"><button id="searchClose" aria-label="Close search">×</button></div>
 
-  <main>
-    <section class="hero">
-      <div class="hero-copy">
-        <p class="eyebrow">THE EVERYDAY UNIFORM · DROP 01</p>
-        <h1>Wear your<br><em>own rhythm.</em></h1>
-        <p class="hero-description">Relaxed shapes. Muted tones. Pieces that make getting dressed feel effortless.</p>
-        <a class="button button-dark" href="#shop">Explore the collection <span>↗</span></a>
-        <div class="hero-foot"><span>01 / 09</span><span>DESIGNED FOR EVERYDAY</span></div>
-      </div>
-      <div class="hero-image-wrap"><img src="images/look-01.jpg" alt="White shirt, tie and relaxed grey denim outfit" class="hero-image"><div class="image-stamp">THE<br>NEW<br>CLASSIC.</div></div>
+    <!-- Home Section -->
+    <section id="home" class="section active">
+        <div class="hero">
+            <div class="hero-content">
+                <h1>Elevate Your Style</h1>
+                <p>Premium streetwear crafted for the modern aesthetic. Oversized silhouettes, refined textures, timeless essentials.</p>
+                <button class="btn-primary" onclick="showSection('shop')">Shop Collection</button>
+            </div>
+        </div>
+
+        <div class="featured">
+            <h2 class="section-title">Featured Essentials</h2>
+            <div class="product-grid" id="featuredGrid"></div>
+        </div>
     </section>
 
-    <section class="ticker" aria-label="Brand statement"><div>LESS NOISE. MORE YOU. <span>✳</span> EVERYDAY, REDEFINED. <span>✳</span> LESS NOISE. MORE YOU. <span>✳</span> EVERYDAY, REDEFINED. <span>✳</span></div></section>
-
-    <section class="shop-section section-pad" id="shop">
-      <div class="section-heading"><div><p class="eyebrow">THE AETHER EDIT</p><h2>Find your <em>form.</em></h2></div><p class="section-note">A considered collection of easy layers<br>and oversized essentials.</p></div>
-      <div class="shop-toolbar"><div class="filter-list" role="group" aria-label="Filter products"><button class="filter-chip active" data-filter="all">All pieces <span>09</span></button><button class="filter-chip" data-filter="tops">Tops</button><button class="filter-chip" data-filter="bottoms">Bottoms</button><button class="filter-chip" data-filter="outerwear">Outerwear</button><button class="filter-chip" data-filter="looks">Styled looks</button></div><span class="result-count" id="resultCount">09 PRODUCTS</span></div>
-      <div class="product-grid" id="productGrid"></div>
+    <!-- Shop Section -->
+    <section id="shop" class="section">
+        <div class="container">
+            <h2 class="section-title">All Products</h2>
+            <div class="filters">
+                <button class="filter-btn active" data-filter="all">All</button>
+                <button class="filter-btn" data-filter="tops">Tops</button>
+                <button class="filter-btn" data-filter="bottoms">Bottoms</button>
+                <button class="filter-btn" data-filter="outerwear">Outerwear</button>
+            </div>
+            <div class="product-grid" id="shopGrid"></div>
+        </div>
     </section>
 
-    <section class="editorial section-pad" id="combos">
-      <div class="editorial-image"><img src="images/look-05.jpg" alt="Dark layered streetwear outfit with denim jacket and cargo trousers" loading="lazy"><span class="vertical-label">AETHER / LOOKBOOK 01</span></div>
-      <div class="editorial-copy"><p class="eyebrow">STYLE IT YOUR WAY</p><h2>Good style.<br><em>No overthinking.</em></h2><p>Build a look around the pieces you reach for again and again. Washed denim, easy layers and details that do just enough.</p><a href="#shop" class="text-link">Shop the edit <span>↗</span></a><div class="editorial-index">LOOKBOOK <strong>01—09</strong></div></div>
+    <!-- Combos Section -->
+    <section id="combos" class="section">
+        <div class="container">
+            <h2 class="section-title">Curated Combos</h2>
+            <p class="section-subtitle">Complete looks styled for effortless elegance. Save more when you buy together.</p>
+            <div class="combo-grid" id="comboGrid"></div>
+        </div>
     </section>
 
-    <section class="values section-pad" id="story"><div class="values-intro"><p class="eyebrow">THE AETHER APPROACH</p><h2>Less, but<br><em>better.</em></h2></div><div class="value-card"><span>01</span><h3>Easy silhouettes</h3><p>Relaxed proportions made for movement, comfort and your own styling.</p></div><div class="value-card"><span>02</span><h3>Everyday palette</h3><p>Washed greys, deep blacks and quiet neutrals that work together.</p></div><div class="value-card"><span>03</span><h3>Your own uniform</h3><p>Versatile pieces to wear on repeat, not just for one moment.</p></div></section>
+    <!-- About Section -->
+    <section id="about" class="section">
+        <div class="container about-content">
+            <h2 class="section-title">About AETHER</h2>
+            <p>AETHER is a premium streetwear brand focused on elevated everyday essentials. Our pieces blend oversized modern silhouettes with refined fabrics.</p>
+            <p>Every garment is designed with comfort, durability, and timeless aesthetics in mind. Sizes range from S to XXL with a relaxed, contemporary fit.</p>
+            <div class="size-guide">
+                <h3>Size Guide</h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Size</th>
+                            <th>Chest (in)</th>
+                            <th>Waist (in)</th>
+                            <th>Length (in)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>S</td><td>36-38</td><td>28-30</td><td>27</td></tr>
+                        <tr><td>M</td><td>38-40</td><td>30-32</td><td>28</td></tr>
+                        <tr><td>L</td><td>40-42</td><td>32-34</td><td>29</td></tr>
+                        <tr><td>XL</td><td>42-44</td><td>34-36</td><td>30</td></tr>
+                        <tr><td>XXL</td><td>44-46</td><td>36-38</td><td>31</td></tr>
+                    </tbody>
+                </table>
+                <p class="size-note">All tops and outerwear follow a relaxed oversized fit. Bottoms are wide-leg / baggy cut.</p>
+            </div>
+        </div>
+    </section>
 
-    <section class="newsletter section-pad"><div><p class="eyebrow">STAY IN THE LOOP</p><h2>Good things, <em>occasionally.</em></h2><p>Get updates on new drops and styling edits.</p></div><form id="newsletterForm"><label class="sr-only" for="newsletterEmail">Email address</label><input id="newsletterEmail" type="email" placeholder="Your email address" required><button type="submit" aria-label="Subscribe">Join ↗</button><small id="newsletterMessage">No spam. Just the good stuff.</small></form></section>
-  </main>
+    <!-- Cart Sidebar -->
+    <div class="cart-sidebar" id="cartSidebar">
+        <div class="cart-header">
+            <h3>Your Bag</h3>
+            <button onclick="toggleCart()">&times;</button>
+        </div>
+        <div class="cart-items" id="cartItems"></div>
+        <div class="cart-footer">
+            <div class="cart-total">
+                <span>Total</span>
+                <span id="cartTotal">₹0</span>
+            </div>
+            <button class="btn-primary" onclick="proceedToCheckout()" id="checkoutBtn" disabled>Proceed to Checkout</button>
+        </div>
+    </div>
+    <div class="overlay" id="overlay" onclick="closeAllModals()"></div>
 
-  <footer class="site-footer"><div class="footer-top"><a class="wordmark footer-logo" href="#top">AETHER<span>®</span></a><p>Everyday essentials.<br>Personal expression.</p><a class="back-top" href="#top">BACK TO TOP ↑</a></div><div class="footer-bottom"><span>© <span id="year"></span> AETHER STUDIO</span><span>MADE FOR YOUR EVERYDAY</span><span>DEMO STORE · ORDER FLOW NOT CONNECTED TO A PAYMENT GATEWAY</span></div></footer>
+    <!-- Auth Modal -->
+    <div class="modal" id="authModal">
+        <div class="modal-content">
+            <button class="modal-close" onclick="toggleAuthModal()">&times;</button>
+            <div id="loginForm">
+                <h2>Welcome Back</h2>
+                <p class="modal-sub">Secure login to your AETHER account</p>
+                <form onsubmit="handleLogin(event)">
+                    <div class="form-group">
+                        <label>Email</label>
+                        <input type="email" id="loginEmail" required placeholder="you@example.com">
+                    </div>
+                    <div class="form-group">
+                        <label>Password</label>
+                        <input type="password" id="loginPassword" required placeholder="••••••••" minlength="8">
+                    </div>
+                    <button type="submit" class="btn-primary full">Login Securely</button>
+                </form>
+                <p class="switch-form">Don't have an account? <a href="#" onclick="switchToRegister()">Create one</a></p>
+            </div>
+            <div id="registerForm" style="display:none;">
+                <h2>Create Account</h2>
+                <p class="modal-sub">Join AETHER — secure & private</p>
+                <form onsubmit="handleRegister(event)">
+                    <div class="form-group">
+                        <label>Full Name</label>
+                        <input type="text" id="regName" required placeholder="Your name">
+                    </div>
+                    <div class="form-group">
+                        <label>Email</label>
+                        <input type="email" id="regEmail" required placeholder="you@example.com">
+                    </div>
+                    <div class="form-group">
+                        <label>Password</label>
+                        <input type="password" id="regPassword" required placeholder="Min 8 characters" minlength="8">
+                    </div>
+                    <div class="form-group">
+                        <label>Confirm Password</label>
+                        <input type="password" id="regConfirm" required placeholder="Confirm password">
+                    </div>
+                    <button type="submit" class="btn-primary full">Create Secure Account</button>
+                </form>
+                <p class="switch-form">Already have an account? <a href="#" onclick="switchToLogin()">Login</a></p>
+            </div>
+        </div>
+    </div>
 
-  <div class="toast" id="toast" role="status" aria-live="polite"></div>
-  <div class="drawer-backdrop" id="drawerBackdrop"></div>
-  <aside class="cart-drawer" id="cartDrawer" aria-label="Shopping bag" aria-hidden="true"><div class="drawer-header"><div><p class="eyebrow">YOUR SELECTION</p><h2>Your bag <span id="drawerCount">(0)</span></h2></div><button class="close-button" id="cartClose" aria-label="Close bag">×</button></div><div class="cart-lines" id="cartLines"></div><div class="empty-bag" id="emptyBag"><span>✳</span><h3>Your bag is taking a breather.</h3><p>Add a piece you love and it’ll show up here.</p><button class="button button-dark" id="continueShopping">Explore pieces ↗</button></div><div class="drawer-footer" id="drawerFooter"><div class="subtotal"><span>Subtotal</span><strong id="subtotal">₹0</strong></div><p>Shipping and final details can be confirmed when placing your order.</p><button class="button button-dark checkout-button" id="checkoutOpen">Continue to order <span>↗</span></button><small>Demo storefront — no payment is collected on this page.</small></div></aside>
+    <!-- Checkout Modal -->
+    <div class="modal" id="checkoutModal">
+        <div class="modal-content checkout-content">
+            <button class="modal-close" onclick="closeCheckout()">&times;</button>
+            <h2>Secure Checkout</h2>
+            <div class="checkout-summary" id="checkoutSummary"></div>
+            
+            <div class="payment-section">
+                <h3><i class="fas fa-shield-alt"></i> Secure Payment via UPI</h3>
+                <p class="payment-note">All transactions are encrypted. Pay securely using FamPay UPI.</p>
+                
+                <div class="upi-box">
+                    <div class="upi-id">
+                        <span>UPI ID</span>
+                        <strong>9subhadeep@fam</strong>
+                        <button class="copy-btn" onclick="copyUPI()"><i class="fas fa-copy"></i></button>
+                    </div>
+                    <p class="upi-instruction">Open any UPI app (GPay, PhonePe, Paytm, FamPay) → Pay to the UPI ID above → Enter the exact amount → Add Order ID in notes.</p>
+                </div>
 
-  <div class="modal-backdrop" id="modalBackdrop"><section class="order-modal" role="dialog" aria-modal="true" aria-labelledby="orderTitle"><button class="close-button modal-x" id="orderClose" aria-label="Close order form">×</button><p class="eyebrow">ONE LAST STEP</p><h2 id="orderTitle">Let's get it <em>to you.</em></h2><p class="modal-intro">Enter your details to prepare an order message. This demo does not process payments.</p><form id="orderForm"><label>Full name<input name="name" required autocomplete="name" placeholder="Your name"></label><label>Phone number<input name="phone" required inputmode="tel" pattern="[0-9+()\- ]{8,18}" autocomplete="tel" placeholder="Your contact number"></label><label>Delivery address<textarea name="address" rows="3" required autocomplete="street-address" placeholder="House, street, area and PIN code"></textarea></label><label>Order note <textarea name="note" rows="2" placeholder="Size, colour or anything else (optional)"></textarea></label><button class="button button-dark full-width" type="submit">Prepare order message ↗</button><p class="form-footnote">Connect this form to your own WhatsApp number or store backend before accepting real orders.</p></form></section></div>
-  <script src="script.js"></script>
+                <div class="form-group">
+                    <label>Your UPI Transaction ID / Reference</label>
+                    <input type="text" id="txnId" placeholder="Enter UPI reference number after payment" required>
+                </div>
+                <div class="form-group">
+                    <label>Delivery Address</label>
+                    <textarea id="address" rows="3" placeholder="Full address with pincode" required></textarea>
+                </div>
+                <div class="form-group">
+                    <label>Phone Number</label>
+                    <input type="tel" id="phone" placeholder="+91 XXXXX XXXXX" required>
+                </div>
+                <button class="btn-primary full" onclick="confirmOrder()">Confirm Order & Pay</button>
+                <p class="secure-note"><i class="fas fa-lock"></i> 256-bit SSL encrypted • Your data is never stored unencrypted</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Order Success -->
+    <div class="modal" id="successModal">
+        <div class="modal-content success-content">
+            <div class="success-icon"><i class="fas fa-check-circle"></i></div>
+            <h2>Order Confirmed!</h2>
+            <p>Thank you for shopping with AETHER.</p>
+            <p class="order-id">Order ID: <strong id="orderIdDisplay"></strong></p>
+            <p>We will verify your UPI payment and ship your order within 24-48 hours.</p>
+            <button class="btn-primary" onclick="closeSuccess()">Continue Shopping</button>
+        </div>
+    </div>
+
+    <!-- Product Detail Modal -->
+    <div class="modal" id="productModal">
+        <div class="modal-content product-detail">
+            <button class="modal-close" onclick="closeProductModal()">&times;</button>
+            <div class="product-detail-grid" id="productDetailContent"></div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-brand">
+                <h3>AETHER</h3>
+                <p>Premium streetwear for the modern aesthetic.</p>
+            </div>
+            <div class="footer-links">
+                <h4>Shop</h4>
+                <a href="#" onclick="showSection('shop')">All Products</a>
+                <a href="#" onclick="showSection('combos')">Combos</a>
+            </div>
+            <div class="footer-links">
+                <h4>Support</h4>
+                <a href="#">Size Guide</a>
+                <a href="#">Shipping</a>
+                <a href="#">Returns</a>
+            </div>
+            <div class="footer-links">
+                <h4>Secure Payments</h4>
+                <p><i class="fas fa-lock"></i> UPI • FamPay</p>
+                <p class="upi-footer">9subhadeep@fam</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2025 AETHER. All rights reserved. Secure & encrypted checkout.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
 </body>
 </html>
